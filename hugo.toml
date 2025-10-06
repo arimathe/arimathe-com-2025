@@ -97,6 +97,20 @@ ordered = true
 
 
 ########################### Media types ###########################
+
+########################### Assets ###########################
+[assets]
+[assets.resources]
+[assets.resources.images]
+[assets.resources.images.quality]
+[assets.resources.images.quality.jpeg]
+quality = 75
+[assets.resources.images.quality.png]
+quality = 75
+[assets.resources.images.quality.webp]
+quality = 75
+
+
 [mediaTypes]
 [mediaTypes."application/manifest+json"]
 suffixes = ["webmanifest"]
