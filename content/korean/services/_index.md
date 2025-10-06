@@ -7,7 +7,7 @@ draft: false
 # Features
 features:
   - title: "EC Total 판매관리 시스템"
-    image: "/images/ama-ec-to-capture.png"
+    image: "/images/ama_ec_to_capture.png"
     content: "국내·해외 판매에 최적화된 시스템"
     bulletpoints:
       - "WMS·OMS·TMS·CMS를 하나의 시스템으로 통합 관리"
@@ -21,7 +21,7 @@ features:
       link: "https://ama.ec-to.com"
 
   - title: "My Entry 이벤트 관리 시스템"
-    image: "/images/myentry-capture.png"
+    image: "/images/myentry_capture.png"
     content: "특별 이벤트를 위한 이벤트 관리 시스템"
     bulletpoints:
       - "QR 입장권 시스템 (QR 발행, 입장·퇴장 관리, 데이터 관리)"
@@ -34,7 +34,7 @@ features:
       link: "https://myentry.jp"
 
   - title: "ARICART"
-    image: "/images/service-3.png"
+    image: "/images/service_3.png"
     content: "무한 확장 가능한 자사 EC사이트 구축 솔루션"
     bulletpoints:
       - "MSA 설계로 사용자 급증에도 유연하게 대응 (동시 접속 제한 없음)"
@@ -48,7 +48,7 @@ features:
       link: "/contact"
 
   - title: "A Play City"
-    image: "/images/aplaycity-capture.png"
+    image: "/images/aplaycity_capture.png"
     content: "비공개형 라이브 스트리밍"
     bulletpoints:
       - "공개형/비공개형/초대형 채널 생성"
@@ -62,7 +62,7 @@ features:
        link: "https://intro.aplay.city/"
 
   - title: "기타 프로젝트"
-    image: "/images/service-4.png"
+    image: "/images/service_4.png"
     content: "해당 페이지에서 소개하지 못한 프로젝트들"
     bulletpoints:
       - "자막 번역 관리 시스템: 원본 문서를 입력하면 PPT용 다국어 자막 생성이 가능한 시스템"

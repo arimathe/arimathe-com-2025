@@ -12,7 +12,7 @@ banner:
 # Features
 features:
   - title: "플랫폼 개발 사업"
-    image: "/images/service-1.png"
+    image: "/images/service_1.png"
     content: "저희는 다양한 경험을 통해 다양한 플랫폼 제작을 해왔습니다.<br>시스템과 개발에 관련된 모든 영역에 대응 가능합니다."
     bulletpoints:
       - "iOS, Android 원격 관리 플랫폼 개발"
@@ -27,7 +27,7 @@ features:
       link: "/services"
 
   - title: "K-POP과 공연 관련 사업"
-    image: "/images/service-2.png"
+    image: "/images/service_2.png"
     content: "일본 현지에 맞춘 온라인·오프라인 판매 사이트를 운영합니다."
     bulletpoints:
       - "QR 입장권 시스템 (QR 발행, 입장·퇴장 관리, 데이터 관리)"
@@ -42,7 +42,7 @@ features:
       link: "/services"
 
   - title: "해외/국내 판매 사업"
-    image: "/images/service-3.png"
+    image: "/images/service_3.png"
     content: "자사 몰과 마케팅 플랫폼을 활용하여 판매를 최적화합니다. 일본 / 한국 / 미국 / 홍콩 / 중동 / 유럽 언어에 관계없이 판매가 가능합니다."
     bulletpoints:
       - "관련 플랫폼: WMS, EC Total Solution, Ari Marketing Solution, Aricart, SEO Solution"
@@ -53,7 +53,7 @@ features:
       link: "/services"
 
   - title: "해외/국내 물류 사업"
-    image: "/images/service-4.png"
+    image: "/images/service_4.png"
     content: "국내·해외 자사 전용 배송 라인을 보유하여 각국에 최적한 배송이 가능한 플랫폼을 제공하고 있습니다."
     bulletpoints:
       - "관련 플랫폼: WMS, EC Total Solution, Ari Marketing Solution"

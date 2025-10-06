@@ -7,7 +7,7 @@ draft: false
 # Features
 features:
   - title: "EC Total販売管理システム"
-    image: "/images/ama-ec-to-capture.png"
+    image: "/images/ama_ec_to_capture.png"
     content: "国内・海外の販売に最適化されたシステム"
     bulletpoints:
       - "WMS・OMS・TMS・CMSを一つのシステムで一元化管理"
@@ -21,7 +21,7 @@ features:
       link: "https://ama.ec-to.com"
 
   - title: "My Entry イベント管理システム"
-    image: "/images/myentry-capture.png"
+    image: "/images/myentry_capture.png"
     content: "特別イベントを行うためのイベント管理システム"
     bulletpoints:
       - "QR入場券システム（QRの発行、入場・退場管理、データー管理）"
@@ -34,7 +34,7 @@ features:
       link: "https://myentry.jp"
 
   - title: "ARICART"
-    image: "/images/service-3.png"
+    image: "/images/service_3.png"
     content: "無限に拡張可能な自社ECサイト構築ソリューション"
     bulletpoints:
       - "MSA設計によるユーザー急増にも柔軟に対応(同時接続制限なし)"
@@ -48,7 +48,7 @@ features:
       link: "/contact"
 
   - title: "A Play City"
-    image: "/images/aplaycity-capture.png"
+    image: "/images/aplaycity_capture.png"
     content: "非公開型ライブストリーミング"
     bulletpoints:
       - "公開型/非公開型/招待型チャンネル作成"
@@ -62,7 +62,7 @@ features:
        link: "https://intro.aplay.city/"
 
   - title: "その他PROJECT"
-    image: "/images/service-1.png"
+    image: "/images/service_1.png"
     content: "当該ページでは紹介しきれないプロジェクト"
     bulletpoints:
       - "字幕翻訳管理システム：原本文書を入力したらPPT用で多言語の字幕生成が可能なシステム"

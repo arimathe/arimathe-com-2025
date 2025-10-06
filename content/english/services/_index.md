@@ -7,7 +7,7 @@ draft: false
 # Features
 features:
   - title: "EC Total Sales Management System"
-    image: "/images/ama-ec-to-capture.png"
+    image: "/images/ama_ec_to_capture.png"
     content: "A system optimized for domestic and international sales"
     bulletpoints:
       - "Integrated management of WMS, OMS, TMS, and CMS in a single system"
@@ -21,7 +21,7 @@ features:
       link: "https://ama.ec-to.com"
 
   - title: "My Entry Event Management System"
-    image: "/images/myentry-capture.png"
+    image: "/images/myentry_capture.png"
     content: "Event management system for special events"
     bulletpoints:
       - "QR ticket system (QR issuance, entry/exit management, data management)"
@@ -34,7 +34,7 @@ features:
       link: "https://myentry.jp"
 
   - title: "ARICART"
-    image: "/images/service-3.png"
+    image: "/images/service_3.png"
     content: "Infinitely scalable in-house EC site building solution"
     bulletpoints:
       - "Flexible response to surges in users with MSA design (no concurrent access limit)"
@@ -48,7 +48,7 @@ features:
       link: "/contact"
 
   - title: "A Play City"
-    image: "/images/aplaycity-capture.png"
+    image: "/images/aplaycity_capture.png"
     content: "Private live streaming"
     bulletpoints:
       - "Create public/private/invite-only channels"
@@ -61,7 +61,7 @@ features:
        link: "https://intro.aplay.city/"
 
   - title: "Other Projects"
-    image: "/images/service-4.png"
+    image: "/images/service_4.png"
     content: "Projects not introduced on this page"
     bulletpoints:
       - "Subtitle translation management system: Generates multilingual subtitles for PPT by entering the original document"

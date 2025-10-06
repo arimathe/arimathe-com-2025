@@ -12,7 +12,7 @@ banner:
 # Features
 features:
   - title: "Platform Development Business"
-    image: "/images/service-1.png"
+    image: "/images/service_1.png"
     content: "With a wealth of experience, we have developed a variety of platforms.<br>We can handle all areas related to systems and development."
     bulletpoints:
       - "Development of iOS and Android remote management platforms"
@@ -27,7 +27,7 @@ features:
       link: "/services"
 
   - title: "K-POP and Concert-Related Business"
-    image: "/images/service-2.png"
+    image: "/images/service_2.png"
     content: "We operate online and offline sales sites tailored to the Japanese market."
     bulletpoints:
       - "QR ticket system (QR issuance, entry/exit management, data management)"
@@ -42,7 +42,7 @@ features:
       link: "/services"
 
   - title: "Overseas/Domestic Sales Business"
-    image: "/images/service-3.png"
+    image: "/images/service_3.png"
     content: "We optimize sales by utilizing our own mall and marketing platforms. Sales are possible regardless of language in Japan, Korea, the US, Hong Kong, the Middle East, and Europe."
     bulletpoints:
       - "Related platforms: WMS, EC Total Solution, Ari Marketing Solution, Aricart, SEO Solution"
@@ -53,7 +53,7 @@ features:
       link: "/services"
 
   - title: "Overseas/Domestic Logistics Business"
-    image: "/images/service-4.png"
+    image: "/images/service_4.png"
     content: "We provide platforms that enable optimal delivery to each country by operating dedicated domestic and international delivery lines."
     bulletpoints:
       - "Related platforms: WMS, EC Total Solution, Ari Marketing Solution"
