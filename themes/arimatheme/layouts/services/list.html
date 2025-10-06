@@ -161,74 +161,19 @@
       
       modal.style.display = 'block';
       
-      // 이미지 경로 처리 - Cloudflare Pages와 Hugo 환경 모두 대응
-      function getImagePaths(originalSrc) {
-        const baseUrl = window.location.origin;
-        const paths = [];
-        
-        // 원본 경로
-        paths.push(originalSrc);
-        
-        // 상대 경로를 절대 경로로 변환
-        if (originalSrc.startsWith('/')) {
-          paths.push(baseUrl + originalSrc);
-        }
-        
-        // /images/ 경로를 /assets/images/로 변환
-        if (originalSrc.includes('/images/')) {
-          const assetPath = originalSrc.replace('/images/', '/assets/images/');
-          paths.push(baseUrl + assetPath);
-          paths.push(assetPath);
-        }
-        
-        // /assets/images/ 경로를 /images/로 변환
-        if (originalSrc.includes('/assets/images/')) {
-          const imagePath = originalSrc.replace('/assets/images/', '/images/');
-          paths.push(baseUrl + imagePath);
-          paths.push(imagePath);
-        }
-        
-        // 중복 제거
-        return [...new Set(paths)];
-      }
+      // static 폴더의 이미지를 직접 사용 (Hugo가 public 폴더로 복사함)
+      const finalImageSrc = imageSrc;
+      modalImg.src = finalImageSrc;
       
-      // 이미지 로딩 시도
-      function tryLoadImage(src) {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => resolve(src);
-          img.onerror = () => reject(src);
-          img.src = src;
-        });
-      }
+      // 이미지 로딩 에러 처리
+      modalImg.onerror = function() {
+        console.error('이미지 로딩 실패:', finalImageSrc);
+        this.src = '/images/image-placeholder.png';
+      };
       
-      // 여러 경로 시도
-      const imagePaths = getImagePaths(imageSrc);
-      let currentIndex = 0;
-      
-      function loadNextImage() {
-        if (currentIndex >= imagePaths.length) {
-          console.error('모든 이미지 경로 로딩 실패:', imagePaths);
-          modalImg.src = '/images/image-placeholder.png';
-          return;
-        }
-        
-        const currentPath = imagePaths[currentIndex];
-        console.log('이미지 로딩 시도:', currentPath);
-        
-        tryLoadImage(currentPath)
-          .then(validPath => {
-            modalImg.src = validPath;
-            console.log('이미지 로딩 성공:', validPath);
-          })
-          .catch(failedPath => {
-            console.warn('이미지 로딩 실패:', failedPath);
-            currentIndex++;
-            loadNextImage();
-          });
-      }
-      
-      loadNextImage();
+      modalImg.onload = function() {
+        console.log('이미지 로딩 성공:', finalImageSrc);
+      };
       
       // ESC 키로 모달 닫기
       document.addEventListener('keydown', function(event) {
