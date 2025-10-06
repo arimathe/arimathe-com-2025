@@ -1,0 +1,20 @@
+################ Japanese language ##################
+[ja]
+languageName = "日本語"
+languageCode = "ja-jp"
+contentDir = "content/japanese"
+weight = 1
+
+################ English language ##################
+[en]
+languageName = "English"
+languageCode = "en-us"
+contentDir = "content/english"
+weight = 2
+
+################ Korean language ##################
+[ko]
+languageName = "한국어"
+languageCode = "ko-kr"
+contentDir = "content/korean"
+weight = 3

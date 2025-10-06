@@ -1,0 +1,38 @@
+############# English navigation ##############
+
+# main menu
+[[main]]
+name = "ホーム"
+url = "/"
+weight = 1
+
+[[main]]
+name = "会社概要"
+url = "/about"
+weight = 2
+
+[[main]]
+name = "サービス"
+url = "/services"
+weight = 3
+
+[[main]]
+name = "アクセス"
+url = "/access"
+weight = 4
+
+# footer menu
+[[footer]]
+name = "会社概要"
+url = "/about"
+weight = 1
+
+[[footer]]
+name = "Contact Us"
+url = "/contact"
+weight = 2
+
+[[footer]]
+name = "個人情報の取扱いについて"
+url = "/privacy-policy"
+weight = 3

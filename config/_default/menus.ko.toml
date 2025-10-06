@@ -1,0 +1,38 @@
+############# English navigation ##############
+
+# main menu
+[[main]]
+name = "홈"
+url = "/"
+weight = 1
+
+[[main]]
+name = "회사개요"
+url = "/about"
+weight = 2
+
+[[main]]
+name = "서비스"
+url = "/services"
+weight = 3
+
+[[main]]
+name = "오시는 길"
+url = "/access"
+weight = 4
+
+# footer menu
+[[footer]]
+name = "회사개요"
+url = "/about"
+weight = 1
+
+[[footer]]
+name = "문의하기"
+url = "/contact"
+weight = 2
+
+[[footer]]
+name = "개인정보 처리방침"
+url = "/privacy-policy"
+weight = 3

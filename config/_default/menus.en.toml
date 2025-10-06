@@ -1,0 +1,38 @@
+############# English navigation ##############
+
+# main menu
+[[main]]
+name = "HOME"
+url = "/"
+weight = 1
+
+[[main]]
+name = "Company Overview"
+url = "/about"
+weight = 2
+
+[[main]]
+name = "Services"
+url = "/services"
+weight = 3
+
+[[main]]
+name = "Access"
+url = "/access"
+weight = 4
+
+# footer menu
+[[footer]]
+name = "Company Overview"
+url = "/about"
+weight = 1
+
+[[footer]]
+name = "Contact Us"
+url = "/contact"
+weight = 2
+
+[[footer]]
+name = "Privacy Policy"
+url = "/privacy-policy"
+weight = 3

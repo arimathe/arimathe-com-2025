@@ -1,0 +1,203 @@
+{{ define "main" }}
+
+  <!-- Features -->
+  {{ range $i, $e:= .Params.features }}
+    <section class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }}">
+      <div class="container">
+        <div class="row items-center justify-between">
+          <div
+            class="mb:md-0 {{ if not (modBool $i 2) }}
+              md:order-2
+            {{ end }} md:col-5 mb-6">
+            <div class="image-zoom-container cursor-pointer" data-image-src="{{ .image | absURL }}">
+              {{ partial "image" (dict "Src" .image "Alt" "feature image" "DisplayXL" "520x" "DisplayLG" "425x" "DisplayMD" "360x") }}
+              <div class="image-overlay">
+                <i class="fa fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+          <div
+            class="{{ if not (modBool $i 2) }}
+              md:order-1
+            {{ end }} md:col-7 lg:col-6">
+            <h2 class="mb-4">
+              {{ .title | markdownify }}
+            </h2>
+            <p class="mb-8 text-lg">
+              {{ .content | markdownify }}
+            </p>
+            <ul>
+              {{ range .bulletpoints }}
+                <li class="relative mb-4 pl-6">
+                  <i class="fa fa-check absolute left-0 top-1.5"></i>
+                  {{ . | markdownify }}
+                </li>
+              {{ end }}
+            </ul>
+            {{ with .button }}
+              {{ if .enable }}
+                <a class="btn btn-primary mt-6" href="{{ .link | absURL }}" target="_blank" rel="noreferrer">
+                  {{ .label }}
+                  <i class="fa fa-arrow-right pl-2"></i>
+                </a>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  <!-- /Features -->
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+    <span class="modal-close" onclick="closeImageModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <style>
+    .image-zoom-container {
+      position: relative;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    
+    .image-zoom-container:hover {
+      transform: scale(1.02);
+    }
+    
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 8px;
+    }
+    
+    .image-zoom-container:hover .image-overlay {
+      opacity: 1;
+    }
+    
+    .image-overlay i {
+      color: white;
+      font-size: 2rem;
+    }
+    
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: zoomIn 0.3s ease;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .modal-close:hover,
+    .modal-close:focus {
+      color: #bbb;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes zoomIn {
+      from { transform: translate(-50%, -50%) scale(0.5); }
+      to { transform: translate(-50%, -50%) scale(1); }
+    }
+    
+    @media (max-width: 768px) {
+      .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+      }
+      
+      .modal-close {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+      }
+    }
+  </style>
+
+  <script>
+    function openImageModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      
+      modal.style.display = 'block';
+      modalImg.src = imageSrc;
+      
+      // ESC 키로 모달 닫기
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeImageModal();
+        }
+      });
+      
+      // 스크롤 방지
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeImageModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+      
+      // 스크롤 복원
+      document.body.style.overflow = 'auto';
+    }
+    
+    // 이미지 컨테이너 클릭 이벤트 추가
+    document.addEventListener('DOMContentLoaded', function() {
+      const imageContainers = document.querySelectorAll('.image-zoom-container');
+      imageContainers.forEach(container => {
+        container.addEventListener('click', function() {
+          const imageSrc = this.getAttribute('data-image-src');
+          openImageModal(imageSrc);
+        });
+      });
+    });
+    
+    // 모달 외부 클릭 시 닫기 (이미지 자체 클릭은 제외)
+    document.getElementById('imageModal').addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeImageModal();
+      }
+    });
+  </script>
+
+{{ end }}

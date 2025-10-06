@@ -1,0 +1,229 @@
+{{ define "main" }}
+  {{ partial "page-header" . }}
+
+  <style>
+    .alert-success { background:#eefbea; padding:.75rem 1rem; border:1px solid #bfe7b9; border-radius:.5rem; }
+    .alert-error   { background:#fff1f0; padding:.75rem 1rem; border:1px solid #ffccc7; border-radius:.5rem; }
+    .hidden { display:none; }
+    button[disabled] { opacity:.7; cursor:not-allowed; }
+    
+    /* Placeholder 텍스트를 더 흐리게 표시 */
+    .form-input::placeholder {
+      color: #999999 !important;
+      opacity: 0.6;
+    }
+    
+    /* WebKit 브라우저용 */
+    .form-input::-webkit-input-placeholder {
+      color: #999999 !important;
+      opacity: 0.6;
+    }
+    
+    /* Firefox용 */
+    .form-input::-moz-placeholder {
+      color: #999999 !important;
+      opacity: 0.6;
+    }
+    
+    /* Firefox 19+용 */
+    .form-input::-moz-placeholder {
+      color: #999999 !important;
+      opacity: 0.6;
+    }
+    
+    /* IE용 */
+    .form-input:-ms-input-placeholder {
+      color: #999999 !important;
+      opacity: 0.6;
+    }
+    
+    /* Edge용 */
+    .form-input::-ms-input-placeholder {
+      color: #999999 !important;
+      opacity: 0.6;
+    }
+  </style>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="md:col-10 lg:col-6 mx-auto">
+          <div id="form-alert" role="alert" aria-live="polite" class="hidden"></div>
+          <form action="{{ site.Params.contact_form_action }}" method="POST" id="contactForm" accept-charset="UTF-8">
+            <div class="mb-6">
+              <label for="office_name" class="form-label">
+                {{ .Params.office_name }} <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="office_name"
+                name="office_name"
+                class="form-input"
+                placeholder="株式会社ＡＲＩＭＡＴＨＥ"
+                type="text" required/>
+            </div>
+            <div class="mb-6">
+              <label for="person_name" class="form-label">
+                {{ .Params.person_name }} <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="person_name"
+                name="person_name"
+                class="form-input"
+                placeholder="例）山田 太郎"
+                type="text" required/>
+            </div>
+            <div class="mb-6">
+              <label for="person_name_kana" class="form-label">
+                {{ .Params.person_name_kana }} <span class="text-red-500"></span>
+              </label>
+              <input
+                id="person_name_kana"
+                name="person_name_kana"
+                class="form-input"
+                placeholder="例）ヤマダ タロウ"
+                type="text" />
+            </div>
+            <div class="mb-6">
+              <label for="email" class="form-label">
+                {{ .Params.email }} <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="例）tarou@arimathe.com"
+                type="email" required/>
+            </div>
+            <div class="mb-6">
+              <label for="phonenum" class="form-label">
+                {{ .Params.phonenum }} <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="phonenum"
+                name="phonenum"
+                class="form-input"
+                placeholder="半角数字"
+                type="text" required/>
+            </div>
+            <div class="mb-6">
+              <label for="homepage_url" class="form-label">
+                {{ .Params.homepage_url }} <span class="text-red-500"></span>
+              </label>
+              <input
+                id="homepage_url"
+                name="homepage_url"
+                class="form-input"
+                placeholder="http://www.arimathe.com"
+                type="text" />
+            </div>
+            <div class="mb-6">
+              <label for="message" class="form-label">
+                {{ .Params.message }} <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-input"
+                placeholder="{{ .Params.full_char_200_limit }}"
+                rows="8" required></textarea>
+            </div>
+            <!-- 전송 시각 -->
+            <input type="hidden" name="ts" id="form-ts">
+            <div
+                class="cf-turnstile"
+                data-sitekey="0x4AAAAAAB40U2grcsREfN1K"
+                data-action="contact"
+                data-theme="light"
+            ></div>
+            <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+            <button type="submit" class="btn btn-primary" id="submitBtn">{{ .Params.submit }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const alertBox = document.getElementById('form-alert');
+    const submitBtn = document.getElementById('submitBtn');
+    const tsField = document.getElementById('form-ts');
+  
+    // 최초 로드 시각 기록
+    tsField.value = Date.now().toString();
+  
+    function showAlert(type, msg) {
+      // type: 'success' | 'error'
+      alertBox.className = '';
+      alertBox.classList.add(type === 'success' ? 'alert-success' : 'alert-error');
+      alertBox.textContent = msg;
+      alertBox.style.margin = '1rem 0';
+    }
+    function clearAlert() {
+      alertBox.className = 'hidden';
+      alertBox.textContent = '';
+    }
+    function setSubmitting(isSubmitting) {
+      submitBtn.disabled = isSubmitting;
+      submitBtn.dataset.originalText ??= submitBtn.textContent;
+      submitBtn.textContent = isSubmitting ? 'Sending...' : submitBtn.dataset.originalText;
+    }
+    function resetTurnstileIfAny() {
+      // 보이는/Managed 모드에서도 재시도 시 토큰 새로고침을 권장
+      if (window.turnstile && typeof turnstile.reset === 'function') {
+        try { turnstile.reset(); } catch (e) {}
+      }
+    }
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearAlert();
+      setSubmitting(true);
+  
+      try {
+        // 새 토큰이 필요하다면 여기서 turnstile.reset() 후 약간의 지연을 둘 수도 있음
+        const fd = new FormData(form);
+  
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: fd,
+          headers: { 'Accept': 'application/json' }  // PHP에서 json_response 사용 중
+        });
+  
+        // 네트워크/HTTP 오류 처리
+        if (!res.ok) {
+          showAlert('error', `Request failed (${res.status})`);
+          resetTurnstileIfAny();
+          setSubmitting(false);
+          return;
+        }
+  
+        const data = await res.json().catch(() => ({}));
+  
+        if (data.ok) {
+          showAlert('success', data.message || '送信成功、２営業日以内にご連絡いたします。');
+          // 폼 리셋 & Turnstile 토큰 재초기화
+          form.reset();
+          tsField.value = Date.now().toString(); // 새 세션 타임스탬프
+          resetTurnstileIfAny();
+        } else {
+          // 서버가 내려준 에러 메시지 우선 표시
+          const err = data.message || data.error || 'エラーが発生しました。再度お試しください。';
+          showAlert('error', err);
+  
+          // Turnstile 토큰 만료/중복 시나리오 대비 재설정
+          // 서버가 error-codes를 돌려주는 구현이라면 아래처럼 케이스 분기 가능
+          if (Array.isArray(data.codes) && data.codes.includes('timeout-or-duplicate')) {
+            resetTurnstileIfAny();
+          }
+        }
+      } catch (err) {
+        showAlert('error', 'ネットワークエラーが発生しました。再度お試しください。');
+        resetTurnstileIfAny();
+      } finally {
+        setSubmitting(false);
+      }
+    });
+  </script>
+
+{{ end }}
