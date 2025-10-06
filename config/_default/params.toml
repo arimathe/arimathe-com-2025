@@ -68,7 +68,6 @@ author = "ARIMATHE INC"
 twitter = "arimathe"
 image = "images/og-image.png"
 
-
 # site verifications
 # verification module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/site-verifications
 [site_verification]
