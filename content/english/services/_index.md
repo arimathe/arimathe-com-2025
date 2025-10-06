@@ -74,7 +74,7 @@ features:
       - "System-wide security check and load testing, security audit system"
       - "Detection system for source code vulnerabilities and improvements in developed projects (regardless of programming language)"
     button:
-       enable: true
-       label: "Learn More"
-       link: "https://intro.aplay.city/"
+      enable: true
+      label: "Contact Us"
+      link: "/contact"
 ---

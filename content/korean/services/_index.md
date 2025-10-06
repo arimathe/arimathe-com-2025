@@ -76,7 +76,7 @@ features:
       - "개발된 프로젝트의 소스 취약점 및 개선점 검출 시스템 (프로그래밍 언어 무관)"
 
     button:
-       enable: true
-       label: "더 보기"
-       link: "https://intro.aplay.city/"
+      enable: true
+      label: "문의하기"
+      link: "/contact"
 ---

@@ -76,7 +76,7 @@ features:
       - "開発されたプロジェクトにおけるソース脆弱性及び改善点検出システム（プログラミング言語は問わない）"
 
     button:
-       enable: true
-       label: "もっと見る"
-       link: "https://intro.aplay.city/"
+      enable: true
+      label: "お問い合わせ"
+      link: "/contact"
 ---
